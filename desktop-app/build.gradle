@@ -1,0 +1,30 @@
+plugins {
+    id "java"
+    id "application"
+    id "io.spring.dependency-management"
+}
+
+group = "vn.edu.doan"
+version = "1.0.0"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = "vn.edu.doan.diabetes.desktop.DesktopApplication"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:3.4.4"
+    }
+}
+
+dependencies {
+    implementation project(":java-backend")
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+}
